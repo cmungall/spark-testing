@@ -28,6 +28,11 @@ class CosineMatcher extends Matcher {
 }
 
 object Util {
+  def makeRandomIndividuals(numClasses: Integer, numIndividuals: Integer) : Seq[Individual] = {
+    val inds = 1 to numIndividuals map { x => makeRandomIndividual(x, numClasses) }
+    //val inds = 1 to numIndividuals map { _ => new Individual(1L, "", Set()) }
+    return inds
+  }
   def makeRandomIndividual(id: Long, numClasses: Integer) : Individual = {
     var r = new scala.util.Random
     val rtypes = 1 to 10 map { _ => r.nextInt(100).toLong }
