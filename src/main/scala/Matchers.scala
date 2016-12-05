@@ -28,14 +28,16 @@ class CosineMatcher extends Matcher {
 }
 
 object Util {
-  def makeRandomIndividuals(numClasses: Integer, numIndividuals: Integer) : Seq[Individual] = {
-    val inds = 1 to numIndividuals map { x => makeRandomIndividual(x, numClasses) }
-    //val inds = 1 to numIndividuals map { _ => new Individual(1L, "", Set()) }
+  def makeRandomIndividuals(numClasses: Integer, numIndividuals: Integer,
+      numTypesPerIndividual: Integer) : Seq[Individual] = {
+    val inds = 1 to numIndividuals map { 
+      x => makeRandomIndividual(x, numClasses, numTypesPerIndividual) 
+    }
     return inds
   }
-  def makeRandomIndividual(id: Long, numClasses: Integer) : Individual = {
+  def makeRandomIndividual(id: Long, numClasses: Integer, numTypesPerIndividual: Integer) : Individual = {
     var r = new scala.util.Random
-    val rtypes = 1 to 10 map { _ => r.nextInt(100).toLong }
+    val rtypes = 1 to numTypesPerIndividual map { _ => r.nextInt(100).toLong }
     return Individual(id=id, label="", inferredTypes=rtypes.toSet)
   }
 }
