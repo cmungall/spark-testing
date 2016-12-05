@@ -1,10 +1,14 @@
+# Spark testing
+
+Testing a ulta-dumb semantic similarity spark implementantion
+
 
 ```
 sbt package
 ```
 
-edit /tmp/README.md
+To run using 10 processors:
 
 ```
-./run.sh 4
+./run.sh 10
 ```
